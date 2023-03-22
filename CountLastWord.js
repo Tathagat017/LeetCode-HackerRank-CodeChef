@@ -21,3 +21,5 @@ var lengthOfLastWord = function (s) {
   }
   return count;
 };
+
+// alternative use trim and split , show s[s.lenght-1].length
