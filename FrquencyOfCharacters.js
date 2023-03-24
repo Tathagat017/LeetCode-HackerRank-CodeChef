@@ -71,3 +71,14 @@ function freq(A) {
   let arr = Object.values(obj);
   return arr;
 }
+// given
+
+//return a array of integers
+function fr(A) {
+  let arr = new Array(26).fill(0);
+
+  for (let c of A.split("")) {
+    arr[c.charCodeAt() - 97] += 1;
+  }
+  return arr;
+}
