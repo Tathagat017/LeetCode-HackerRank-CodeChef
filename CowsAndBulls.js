@@ -36,7 +36,7 @@ Constraints:
 secret.length == guess.length
 secret and guess consist of digits only.
 */
-
+//time complexity : O(n) but space complexity : O(n)
 var getHint = function (secret, guess) {
   secret = secret.split("");
   guess = guess.split("");
@@ -83,7 +83,7 @@ var getHint = function (secret, guess) {
 
 // another approach is to use an array of 10 elements filled with "0 "that dynamically changes as the value frequency of secret and cows is mapped in real time ;
 
-//time complexity : O(1)
+//time complexity : O(n) but space complexity : O(1)
 
 function cows(secret, guess) {
   let bulls = 0;
