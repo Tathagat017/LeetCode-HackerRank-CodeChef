@@ -1,4 +1,6 @@
 function MinimumPlatformsRequired(ar, d) {
+  ar = ar.sort((a, b) => a - b);
+  d = d.sort((a, b) => a - b);
   let n = ar.length;
   let count = 1;
   let ans = 1;
