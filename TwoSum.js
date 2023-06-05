@@ -36,6 +36,20 @@ Only one valid answer exists.
  * @param {number} target
  * @return {number[]}
  */
+var twoSumReal = function (nums, target) {
+  let obj = {};
+
+  for (let i = 0; i <= nums.length - 1; i++) {
+    let sum_diff = target - nums[i];
+
+    if (sum_diff in obj) {
+      return [i, obj[sum_diff]];
+    }
+
+    obj[nums[i]] = i;
+  }
+};
+
 var twoSum = function (nums, target) {
   let i = 0;
   let j = 1;
