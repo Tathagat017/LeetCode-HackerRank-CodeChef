@@ -24,7 +24,9 @@ Constraints:
 -106 <= arr[i] <= 106
 
 */
+//tc : O(n*log(n))
 
+//sp : O(1)
 var canMakeArithmeticProgression = function (arr) {
   arr = arr.sort((a, b) => a - b);
 

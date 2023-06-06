@@ -42,10 +42,13 @@ m == r.length
 
 
 */
+
+//tc : O(n*m*logm):m->maximum size of subarray,dependent on l and r;
+//sc :O(m)
 var checkArithmeticSubarrays = function (nums, l, r) {
-  let x = l.length;
   let i = 0;
   let ans = [];
+
   function ArCheck(ar) {
     ar = ar.sort((a, b) => a - b);
     let dif = ar[1] - ar[0];
@@ -58,17 +61,56 @@ var checkArithmeticSubarrays = function (nums, l, r) {
     return true;
   }
 
-  let del;
   let ar;
 
-  while (x > 0) {
+  while (i <= l.length - 1) {
     ar = nums.slice(l[i], r[i] + 1);
-    //console.log("arrat",ar,nums,l[i],r[i]+1)
+
     ans.push(ArCheck(ar));
     i++;
-    x--;
+
     ar = [];
   }
 
   return ans;
 };
+//~===================================================================
+
+/*
+
+Intuition
+The common idea is that we don't need to sort subarrays. Instead, we can simulate same arithmetic sequence and check that every it's member exist in subarray
+
+Approach
+Iterate over l and r pairs and create subarray [nums[l], ..., nums[r]]
+Check is the subarray an arithmetic sequence:
+Get min and max values
+Get step between each member of it
+Create a Set from subarray values
+Simulate arithmetic sequence starting from min with given steps
+If every item of that sequence is exist in Set, then it is arithmetic sequence.
+
+Complexity
+
+Time complexity: O(n∗m)O(n * m)O(n∗m)
+
+Space complexity: O(n∗m)O(n * m)O(n∗m)
+Code
+*/
+
+function checkArithmeticSubarrays(nums, l, r) {
+  return l.map((_, i) => {
+    const subarray = nums.slice(l[i], r[i] + 1);
+
+    return isArithmeticSequence(subarray);
+  });
+}
+
+function isArithmeticSequence(nums) {
+  const min = Math.min(...nums);
+  const max = Math.max(...nums);
+  const step = (max - min) / (nums.length - 1);
+
+  const set = new Set(nums);
+  return nums.every((_, i) => set.has(min + i * step));
+}
