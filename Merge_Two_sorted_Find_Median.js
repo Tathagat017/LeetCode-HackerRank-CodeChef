@@ -73,3 +73,5 @@ var findMedianSortedArrays = function (nums1, nums2) {
     return arr[h].toFixed(5);
   }
 };
+
+// https://leet-codes.blogspot.com/2022/10/median-of-two-sorted-arrays.html.html
