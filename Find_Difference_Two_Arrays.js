@@ -56,3 +56,47 @@ var findDifference = function (nums1, nums2) {
 // use Binary search instead of .includes() to reduce time complexity
 //now : O(n^2)
 //after binary search: O(nlogn)
+
+var findDifference2 = function (nums1, nums2) {
+  nums1 = nums1.sort((a, b) => a - b);
+
+  nums2 = nums2.sort((a, b) => a - b);
+
+  nums1 = [...new Set(nums1)];
+  nums2 = [...new Set(nums2)];
+
+  function binarySearch(arr, target) {
+    let left = 0;
+    let right = arr.length - 1;
+
+    while (left <= right) {
+      let mid = Math.floor((left + right) / 2);
+      if (arr[mid] === target) {
+        return true;
+      } else if (arr[mid] < target) {
+        left = mid + 1;
+      } else {
+        right = mid - 1;
+      }
+    }
+
+    return false; // Target not found
+  }
+
+  let ans1 = [];
+  let ans2 = [];
+
+  for (let i = 0; i <= nums1.length - 1; i++) {
+    if (!binarySearch(nums2, nums1[i])) {
+      ans1.push(nums1[i]);
+    }
+  }
+
+  for (let i = 0; i <= nums2.length - 1; i++) {
+    if (!binarySearch(nums1, nums2[i])) {
+      ans2.push(nums2[i]);
+    }
+  }
+
+  return [ans1, ans2];
+};
