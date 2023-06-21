@@ -27,11 +27,13 @@ s and t consist of lowercase English letters.
 
 
 */
+
+//TC : O(NLogN);
 var findTheDifference = function (s, t) {
-  s = s.split("").sort();
-  t = t.split("").sort();
+  s = s.split("").sort().join("");
+  t = t.split("").sort().join("");
   console.log(s, t);
-  let j = 0;
+
   for (let i = 0; i <= t.length - 1; i++) {
     if (s[i] == undefined || s[i] !== t[i]) {
       return t[i];
