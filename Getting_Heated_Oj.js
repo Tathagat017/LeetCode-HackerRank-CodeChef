@@ -23,7 +23,7 @@ function runProgram(input) {
   let x = input.trim().split("\n");
   let loop = +x[0];
   let k = 0;
-  for (h = 1; h <= loop; h++) {
+  for (let h = 1; h <= loop; h++) {
     k++;
     let arr = x[k].trim().split(" ").map(Number);
     check(arr);
