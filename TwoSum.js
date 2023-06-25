@@ -92,3 +92,53 @@ function twoSum3(nums, target) {
     }
   }
 }
+//~```````````````````````````````````````````````````````
+
+var twoSum4 = function (nums, target) {
+  function getKeyByValue(map, searchValue) {
+    for (let [key, value] of map) {
+      if (value === searchValue) {
+        map.set(key, "X");
+        return key;
+      }
+    }
+    return null;
+  }
+
+  const map = new Map();
+
+  for (let i = 0; i <= nums.length - 1; i++) {
+    map.set(i, nums[i]);
+  }
+
+  console.log(map);
+  nums = nums.sort((a, b) => a - b);
+
+  let i = 0;
+  let j = nums.length - 1;
+
+  let k = target;
+
+  let ans = [];
+
+  while (i <= nums.length - 1) {
+    let sum = nums[i] + nums[j];
+
+    if (sum == k) {
+      ans.push(nums[i], nums[j]);
+      break;
+    }
+
+    if (sum > k) {
+      j--;
+    }
+
+    if (sum < k) {
+      i++;
+    }
+  }
+
+  let x = getKeyByValue(map, ans[0]);
+  let y = getKeyByValue(map, ans[1]);
+  return [x, y];
+};

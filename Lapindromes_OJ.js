@@ -1,7 +1,7 @@
 function Lapindromes(S) {
   // Write Code Here
-  fh = [];
-  sh = [];
+  let fh = [];
+  let sh = [];
   if (S.length % 2 == 0) {
     for (let i = 0; i <= S.length / 2 - 1; i++) {
       fh.push(S[i]);
