@@ -27,10 +27,10 @@ function OneZero(arr) {
   let j = arr.length - 1;
 
   while (i < j) {
-    while (arr[i] == 0) {
+    while (arr[i] == 0 && i < j) {
       i++;
     }
-    while (arr[j] == 1) {
+    while (arr[j] == 1 && i < j) {
       j--;
     }
     if (i < j) {
@@ -38,6 +38,8 @@ function OneZero(arr) {
       arr[i] = arr[j];
       arr[j] = temp;
     }
+    i++;
+    j--;
   }
   console.log(arr);
 }
