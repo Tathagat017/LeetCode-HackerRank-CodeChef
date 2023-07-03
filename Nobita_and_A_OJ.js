@@ -13,7 +13,7 @@ function subs(n, s) {
 
 function runProgram(input) {
   // Write code here
-  i = input.trim().split("\n");
+  let i = input.trim().split("\n");
   let n = +i[0];
   let s = i[1];
   subs(n, s);
