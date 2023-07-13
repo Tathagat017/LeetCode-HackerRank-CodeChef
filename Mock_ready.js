@@ -139,6 +139,29 @@ if (process.env.USER === "") {
   });
 }
 //TRIMMED
+function main(n, a) {
+  a = a.sort((a, b) => a - b);
+  for (let i = 0; i < n; i++) {
+    a.shift();
+    a.pop();
+  }
+  let sum = 0;
+  for (let i = 0; i < a.length; i++) {
+    sum += +a[i];
+  }
+  console.log(Math.floor(sum / a.length));
+}
+function runProgram(input) {
+  // Write code here
+  input = input.split("\n");
+  let tc = input[0];
+  let l = 1;
+  for (let i = 0; i < tc; i++) {
+    let n = +input[l++];
+    let a = input[l++].split(" ").map(Number);
+    main(n, a);
+  }
+}
 
 function TrimmedMean(N, arr) {
   arr = arr.sort((a, b) => a - b);
