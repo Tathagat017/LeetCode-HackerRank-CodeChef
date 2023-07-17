@@ -77,3 +77,19 @@ if (process.env.USERNAME === "") {
     process.exit(0);
   });
 }
+//FIND NTH TERM
+
+function A(n) {
+  if (n === 0 || n === 1) return 10;
+  if (n === 2) return -19;
+
+  if (n > 2 && n % 2 === 0 && n % 3 === 0) {
+    return n / 6 + (A(n - 1) + A(n - 3));
+  } else if (n > 2 && n % 2 === 0) {
+    return n / 2 - (A(n - 1) + A(n - 2));
+  } else if (n > 2 && n % 3 === 0) {
+    return n / 3 + (A(n - 1) + A(n - 3));
+  } else {
+    return A(n - 1);
+  }
+}
