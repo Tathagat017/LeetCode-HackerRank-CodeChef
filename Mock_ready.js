@@ -33,3 +33,47 @@ var addTwoNumbers = function (l1, l2) {
   }
   return ans;
 };
+/// a nd b
+
+function ABOnly(str) {
+  let ans = "";
+
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === "?") {
+      if (ans[ans.length - 1] != "a" && str[i + 1] !== "a") {
+        ans += "a";
+      } else {
+        ans += "b";
+      }
+    } else {
+      ans += str[i];
+    }
+  }
+  console.log(ans);
+}
+
+function runProgram(input) {
+  input = input.split("\n");
+  let str = input[0];
+  ABOnly(str);
+}
+if (process.env.USERNAME === "") {
+  runProgram(``);
+} else {
+  process.stdin.resume();
+  process.stdin.setEncoding("ascii");
+  let read = "";
+  process.stdin.on("data", function (input) {
+    read += input;
+  });
+  process.stdin.on("end", function () {
+    read = read.replace(/\n$/, "");
+    read = read.replace(/\n$/, "");
+    runProgram(read);
+  });
+  process.on("SIGINT", function () {
+    read = read.replace(/\n$/, "");
+    runProgram(read);
+    process.exit(0);
+  });
+}
